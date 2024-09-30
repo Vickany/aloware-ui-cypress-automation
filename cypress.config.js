@@ -16,8 +16,16 @@ module.exports = defineConfig({
     chromeWebSecurity: true,
     specPattern: "cypress/e2e/**/*.spec.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      require('cypress-mochawesome-reporter/plugin')(on);
     },
+    reporter: 'cypress-mochawesome-reporter',
+    reporterOptions: {
+      charts: true,
+      reportPageTitle: 'test-report',
+      embeddedScreenshots: true,
+      inlineAssets: true,
+      saveAllAttempts: false,
+    }
 
   },
 });
