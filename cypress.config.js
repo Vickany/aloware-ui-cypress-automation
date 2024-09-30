@@ -5,6 +5,7 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     viewportHeight: 1080,
     defaultCommandTimeout: 5000,
+    baseUrl: "https://aloware.com/",
     timeout: 5000,
     retries: {
       runMode: 1,
