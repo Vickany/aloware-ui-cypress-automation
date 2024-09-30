@@ -4,8 +4,10 @@ const elements = {
     solutions: '.solution-menu',
     features: '#header-menu > ul > li:nth-child(2)',
     integration: '#header-menu > ul > li:nth-child(3)',
+    aiBot: '#header-menu > ul > li:last-child'
   },
-  sideBarFeatures: '.feature-sidebar.desk-b >* li'
+  sideBarFeatures: '.feature-sidebar.desk-b >* li',
+  btnCheckPricing: '[title="AI Bot Pricing"]'
 }
 
 export default class LandingPage {
@@ -24,6 +26,12 @@ export default class LandingPage {
   static clickIntegrationsMenu() {
     cy.get(elements.menus.integration).click()
   }
+
+  static clickAIMenu() {
+    cy.get(elements.menus.aiBot).click()
+
+  }
+
   static startFreeTrial(freeTrial) {
     cy.get(elements.mainBody).contains(freeTrial).click()
   }
@@ -43,5 +51,18 @@ export default class LandingPage {
     cy.url().should("be.equal", `${Cypress.config("baseUrl")}solution/`);
     cy.get(elements.mainBody).should("contain", demoText)
   }
+
+  static assertAIbotPage() {
+    cy.url().should("be.equal", `${Cypress.config("baseUrl")}ai-bot/`);
+  }
+
+  static assertAiPricing(plan, engagements, monthlyPay, annualPay) {
+    cy.get(elements.btnCheckPricing).click()
+    cy.get('.wp-block-table >* tbody').should("contain", plan)
+      .and("contain", engagements)
+      .and("contain", monthlyPay)
+      .and("contain", annualPay)
+  }
+
 
 }

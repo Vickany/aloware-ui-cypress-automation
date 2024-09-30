@@ -24,7 +24,9 @@ describe("Validate landing page scenarios", () => {
   });
 
   it("Verify available plans for the AI bot", () => {
-
+    LandingPage.clickAIMenu();
+    LandingPage.assertAIbotPage()
+    LandingPage.assertAiPricing(message.plan, message.engagements, message.monthlyPayment, message.annualPayment)
   });
 
 
