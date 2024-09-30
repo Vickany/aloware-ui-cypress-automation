@@ -4,8 +4,6 @@ const elements = {
     solutions: '.solution-menu',
     features: '#header-menu > ul > li:nth-child(2)',
     integration: '#header-menu > ul > li:nth-child(3)',
-    compareUs: 'Compare Us',
-    resources: 'Resources',
   },
   sideBarFeatures: '.feature-sidebar.desk-b >* li'
 }
@@ -26,8 +24,11 @@ export default class LandingPage {
   static clickIntegrationsMenu() {
     cy.get(elements.menus.integration).click()
   }
+  static startFreeTrial(freeTrial) {
+    cy.get(elements.mainBody).contains(freeTrial).click()
+  }
 
-  static assertIntegrationsPage(integrationText, trialText) {
+  static assertIntegrationsPage(integrationText) {
     cy.url().should("be.equal", `${Cypress.config("baseUrl")}integrations/`);
     cy.get(elements.mainBody).should("contain", integrationText);
   }
