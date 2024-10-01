@@ -17,7 +17,7 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/**/*.spec.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
-      return config
+      return config;
     },
     reporter: 'cypress-mochawesome-reporter',
     reporterOptions: {

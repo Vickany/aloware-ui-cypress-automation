@@ -9,18 +9,18 @@ const elements = {
   dropdown: '.el-select-dropdown__item',
   phone: 'input.iti__tel-input',
   btnStartTrial: '.signup-submit__button'
-}
+};
 
 export default class SignUp {
 
   static fillSignUpForm() {
     cy.get(elements.email).type(faker.internet.email({ provider: 'Company.com' }));
-    cy.get(elements.firstName).type(faker.person.firstName())
+    cy.get(elements.firstName).type(faker.person.firstName());
     cy.get(elements.lastName).type(faker.person.lastName());
     cy.get(elements.company).type(faker.company.name());
-    cy.get(elements.size).click()
-    cy.get(elements.dropdown).first().click()
-    cy.get(elements.phone).first().type(faker.phone.number())
+    cy.get(elements.size).click();
+    cy.get(elements.dropdown).first().click();
+    cy.get(elements.phone).first().type(faker.phone.number());
   }
 
   static assertSignUpPage(message) {
