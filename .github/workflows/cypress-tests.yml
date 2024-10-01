@@ -13,8 +13,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Install Cypress
-        run: cypress install
-
       - name: Cypress run
-        run: npm test
+        uses: cypress-io/github-action@v6
+        with:
+          browser: 'chrome'
